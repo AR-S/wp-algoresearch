@@ -1,0 +1,12 @@
+
+
+th#post_thumbnail
+{
+	width: 115px;
+}
+
+.column-post_thumbnail img
+{
+	width: 85px;
+	height: auto;
+}
