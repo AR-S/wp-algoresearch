@@ -71,6 +71,15 @@ jQuery(document).ready(function()
 		items: 1
 	});
 
+	jQuery(".search-toggle").on("click", function(){
+		var parent = jQuery(this).parent();
+		parent.toggleClass("active");
+
+		if( parent.hasClass("active") ) {
+			parent.find("input").focus();
+		}
+	});
+
 	$grid = jQuery("body.notes .site-main");
 
 	$grid.packery({
@@ -238,6 +247,7 @@ function showModal( tree )
 		jQuery(".site-main").append(entry);
 		jQuery("body").addClass("overflown");
 		resBaldrickTriggers();
+		entry.append('<div class="site-logo"><a href="/" rel="home">ars</a></div>');
 		entry.fadeTo(400, 1);
 		menu.removeClass("toggled");
 	}	

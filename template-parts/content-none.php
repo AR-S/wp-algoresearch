@@ -1,7 +1,7 @@
 
 <section class="no-results not-found">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'algores' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( 'No posts in this category yet.', 'algores' ); ?></h1>
 	</header><!-- .page-header -->
 
 	<div class="page-content">
@@ -18,7 +18,7 @@
 
 		else : ?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'algores' ); ?></p>
+			<p><?php esc_html_e( 'Try again later?', 'algores' ); ?></p>
 			<?php
 				get_search_form();
 

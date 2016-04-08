@@ -676,12 +676,17 @@ a:active {
 .main-navigation ul
 {
 	list-style: none;
-	padding: 120px 20px 0 18px;
+	padding: 0 20px 0 18px;
 	margin: 0;
 	position: relative;
 }
 
-.main-navigation ul::before
+.main-navigation .menu
+{
+	padding-top: 120px;
+}
+
+.main-navigation .menu::before
 {
 	content: "Menu";
 	position: absolute;
@@ -1085,7 +1090,6 @@ strong
 	float: left;
 }
 
-.site-search,
 .main-navigation,
 .main-search,
 .menu-show,
@@ -1152,11 +1156,19 @@ strong
 	left: -9999px;
 }
 
-.mc_embed_signup_scroll > label
+.mc_embed_signup_scroll > label,
+.follow .title
 {
 	margin: 45px 0 30px;
 	display: block;
 	text-align: right;
+	cursor: default;
+	border: none;
+}
+
+.follow .title
+{
+	margin-bottom: 20px;
 }
 
 .mc_embed_signup_scroll .email
@@ -1200,7 +1212,20 @@ input[type="submit"].mc-embedded-subscribe
 .site-header .site-logo
 {
 	position: relative;
+	transition: opacity 0.5s;
+}
+.overflown .site-header .site-logo
+{
+	opacity: 0;
+}
+
+.overflown .modal .site-logo
+{
+	position: absolute;
 	z-index: 101;
+	top: 30px;
+	left: 50%;
+	margin-left: -40px;
 }
 
 .site-title
@@ -1376,9 +1401,51 @@ input[type="submit"].mc-embedded-subscribe
 
 /* Search */
 
+.main-search
+{
+	width: 20px;
+	height: 24px;
+	margin-left: 40px;
+}
+
+.search-toggle
+{
+	outline: none;
+	width: 20px;
+	height: 20px;
+	float: left;
+	margin-left: 0px;
+}
+
 .search-options
 {
-	display: none;
+	float: left;
+	width: 0;
+	overflow: hidden;
+	transition: width 0.5s;
+	position: absolute;
+	margin-left: 30px;
+    top: 20px;
+	z-index: 101;
+}
+
+.active .search-options
+{
+	width: 192px;
+}
+
+.search-options input
+{
+	border: none;
+	border-radius: 0;
+	border-bottom: 3px solid #000000;
+	background: rgba(255,255,255,0.8);
+	color: #000;
+	padding: 2px 4px;
+	width: 184px;
+	font-size: 0.85rem;
+	font-weight: 300;
+	outline: transparent;
 }
 
 /* Footer */
@@ -1477,7 +1544,7 @@ input[type="submit"].mc-embedded-subscribe
 	margin: 0;
 	max-width: none;
 	background: rgba(128, 128, 128, 0.95);
-	z-index: 100;
+	z-index: 102;
 	padding-top: 185px;
 	padding-bottom: 3em;
 	color: #FFF;
@@ -1722,7 +1789,8 @@ input[type="submit"].mc-embedded-subscribe
 
 /* Archive listing */
 
-.home .page-title,
+.research .page-title,
+.notes .page-title,
 .archive .page-title
 {
 	text-align: center;
@@ -1733,7 +1801,7 @@ input[type="submit"].mc-embedded-subscribe
 	font-weight: 300;
 }
 
-.home .post-thumbnail,
+.research .post-thumbnail,
 .archive .post-thumbnail
 {
 	height: 450px;
@@ -2122,6 +2190,12 @@ input[type="submit"].mc-embedded-subscribe
 }
 
 
+.no-results .page-content
+{
+	text-align: center;
+}
+
+
 
 /* Caldera forms */
 
@@ -2261,7 +2335,7 @@ input[type="submit"].mc-embedded-subscribe
 		margin-left: 0;
 	}
 
-	.home .post-thumbnail,
+	.research .post-thumbnail,
 	.archive .post-thumbnail
 	{
 		height: 240px;
@@ -2285,7 +2359,7 @@ input[type="submit"].mc-embedded-subscribe
 		padding: 30px 20px 40px;
 	}
 
-	.search-toggle
+	.main-search
 	{
 		margin-left: 20px;
 	}

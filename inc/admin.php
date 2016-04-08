@@ -14,6 +14,8 @@ function algores_manage_posts_columns ( $columns, $post_type )
 }
 add_filter( 'manage_posts_columns', 'algores_manage_posts_columns', 100, 2 );
 
+
+
 function algores_manage_posts_custom_column ( $column_name, $post_id )
 {
 	switch( $column_name )
@@ -27,7 +29,9 @@ function algores_manage_posts_custom_column ( $column_name, $post_id )
 }
 add_action( 'manage_posts_custom_column', 'algores_manage_posts_custom_column', 100, 2 );
 
-add_action( 'fm_user', function()
+
+
+function algores_fm_user()
 {
 	$fm = new Fieldmanager_Media( array(
 		'name' => 'photo',
@@ -38,4 +42,5 @@ add_action( 'fm_user', function()
 		'name' => 'show_profile',
 	));
 	$fm->add_user_form( 'Show on "People" page' );
-});
+}
+add_action('fm_user', 'algores_fm_user');

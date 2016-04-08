@@ -29,6 +29,14 @@
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'container_id' => 'primary-menu-container' ) );?>
 					<a href="#" class="menu-hide" aria-controls="primary-menu" aria-expanded="false">X</a>
 					<!-- Begin MailChimp Signup Form -->
+
+					<ul class="follow">
+						<li class="title">Follow us</li>
+						<li><a href="#">on Facebook</a></li>
+						<li><a href="#">on Google+</a></li>
+						<li><a href="#">on Twitter</a></li>
+					</ul>
+
 					<div class="mc_embed_signup">
 						<form action="//systems.us12.list-manage.com/subscribe/post?u=be348cfa062148d17ebff31a7&amp;id=3a96094cda" method="post" class="mc-embedded-subscribe-form validate" name="mc-embedded-subscribe-form" target="_blank" novalidate>
 							<div class="mc_embed_signup_scroll">
@@ -43,11 +51,11 @@
 				</div>
 			</nav><!-- #site-navigation -->
 
-			<div id="site-search" class="main-search">
+			<div id="site-search" class="main-search<?php if( is_search() ){ echo ' active'; } ?>">
 				<button class="search-toggle" aria-controls="primary-search" aria-expanded="false">Search</button>
-				<div class="search-options">
-					Search options
-				</div>
+				<form class="search-options" method="GET" action="/">
+					<input type="search" name="s" value="<?php echo get_search_query(); ?>" />
+				</form>
 			</div>
 		</div>
 
