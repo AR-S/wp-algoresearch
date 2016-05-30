@@ -50,7 +50,7 @@ function algores_note_link()
 	$data = get_post_meta($post->ID, 'note_data', true);
 
 	if( ! empty($data['link']) ) {
-		echo '<p><a href="' . $data['link'] . '" class="article-link">link to full article</a></p>';
+		echo '<p>(<a href="' . $data['link'] . '" class="article-link">source accessed ' . date('d.m.Y.', $data['date_accessed']) . '</a>)</p>';
 	}
 }
 

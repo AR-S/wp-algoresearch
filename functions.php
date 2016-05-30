@@ -54,6 +54,7 @@ function algores_custom_types()
 			'name' => 'note_data',
 			'children' => array(
 				'link' => new Fieldmanager_Textfield( 'Link:' ),
+				'date_accessed' => new Fieldmanager_Datepicker( 'Date accessed:' ),
 				'size' => new Fieldmanager_Radios( 'Size:', array(
 					'options' => array(
 						'ars_small_1' => 'Small 1 (300x200)',
