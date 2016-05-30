@@ -25,7 +25,6 @@
 					<p><strong>Follow our research</strong></p>
 					<p class="facebook"><a href="#">Facebook</a></p>
 					<p class="twitter"><a href="#">Twitter</a></p>
-					<p class="vimeo"><a href="#">Vimeo</a></p>
 				</div>
 				
 			</div><!-- .site-info -->
