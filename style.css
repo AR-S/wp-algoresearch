@@ -1604,7 +1604,7 @@ input[type="submit"].mc-embedded-subscribe
 
 .modal.about .entry-content
 {
-    font-size: 1.66666666rem;
+    font-size: 1.2rem;
     line-height: 1.36666666;
 }
 
@@ -2297,11 +2297,6 @@ input[type="submit"].mc-embedded-subscribe
 	{
 		display: block;
 		margin: 0 auto !important;
-	}
-
-	.modal.about .entry-content
-	{
-		font-size: 1.25rem;
 	}
 }
 
