@@ -92,14 +92,15 @@ add_action( 'after_setup_theme', 'algores_setup' );
 
 function algores_scripts()
 {
-	$cssdate = '20160329';
+	$cssdate = '20160407';
 
-	wp_enqueue_style( 'algores-style', get_template_directory_uri() . '/style.min.css', array(), $cssdate );
+	wp_enqueue_style( 'algores-style', get_template_directory_uri() . '/style.css', array(), $cssdate );
 	wp_enqueue_script( 'algores-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	wp_enqueue_script( 'imagesLoaded', get_template_directory_uri() . '/js/imagesloaded.pkgd.min.js', array('jquery'), '20160131', true );
 	wp_enqueue_script( 'owlcarousel2', get_template_directory_uri() . '/js/owlcarousel2/owl.carousel.min.js', array('imagesLoaded'), '20160131', true );
 	wp_enqueue_script( 'packery', get_template_directory_uri() . '/js/packery.pkgd.min.js', array('owlcarousel2'), '2.0.0', true );
-	wp_enqueue_script( 'algores-main', get_template_directory_uri() . '/js/main.min.js', array('packery'), $cssdate, true );
+	wp_enqueue_script( 'packery', 'https://www.google.com/recaptcha/api.js?ver=1.3.3.1', array('packery'), '', true );
+	wp_enqueue_script( 'algores-main', get_template_directory_uri() . '/js/main.js', array('packery'), $cssdate, true );
 }
 add_action( 'wp_enqueue_scripts', 'algores_scripts' );
 
