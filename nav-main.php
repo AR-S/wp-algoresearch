@@ -3,13 +3,6 @@
 	<div class="site-menu-drawer">
 		<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'container_id' => 'primary-menu-container' ) );?>
 		<a href="#" class="menu-hide" aria-controls="primary-menu" aria-expanded="false">X</a>
-		
-
-		<ul class="follow">
-			<li class="title">Follow us</li>
-			<li><a href="#">on Facebook</a></li>
-			<li><a href="#">on Twitter</a></li>
-		</ul>
 
 		<!-- Begin MailChimp Signup Form -->
 		<div class="mc_embed_signup">
