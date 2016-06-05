@@ -2,7 +2,7 @@
 
 function algores_body_classes( $classes )
 {
-	if( is_post_type_archive('note') || is_home() || is_single('note') ) {
+	if( is_post_type_archive('note') || is_home() || is_single('note') || is_search() ) {
 		$classes[] = 'notes';
 	} else if( ! is_page() && ! is_404() && ! is_search() ) {
 		$classes[] = 'research';
@@ -21,7 +21,7 @@ function algores_post_classes( $classes )
 	if( is_single() ) {
 		$classes[] = 'open';
 	}
-	else if( get_post_type() === 'note' )
+	else if( get_post_type() === 'note' || is_search() )
 	{
 		$data = get_post_meta($post->ID, 'note_data', true);
 

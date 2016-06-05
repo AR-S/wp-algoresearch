@@ -431,6 +431,12 @@ ol {
 	margin: 0 0 1.5em 3em;
 }
 
+.note .entry-content ul,
+.note .entry-content ol
+{
+	margin-left: 0;
+}
+
 ul {
 	list-style: disc;
 }
@@ -1598,7 +1604,7 @@ input[type="submit"].mc-embedded-subscribe
 
 .modal.about .entry-content
 {
-    font-size: 1.66666666rem;
+    font-size: 1.2rem;
     line-height: 1.36666666;
 }
 
@@ -1885,11 +1891,11 @@ input[type="submit"].mc-embedded-subscribe
 	background-image: url(images/icon-minus-light.svg);
 }
 
-.entry-content h2,
-.entry-content h3,
-.entry-content h4,
-.entry-content h5,
-.entry-content h6
+:not(".note") .entry-content h2,
+:not(".note") .entry-content h3,
+:not(".note") .entry-content h4,
+:not(".note") .entry-content h5,
+:not(".note") .entry-content h6
 {
 	font-size: 1rem;
     font-weight: 500;
@@ -2165,7 +2171,7 @@ input[type="submit"].mc-embedded-subscribe
 .entry-excerpt a
 {
 	text-decoration: none;
-	border-bottom: 1px solid #000;
+	border-bottom: 1px solid currentColor;
 	line-height: normal;
 }
 
@@ -2291,11 +2297,6 @@ input[type="submit"].mc-embedded-subscribe
 	{
 		display: block;
 		margin: 0 auto !important;
-	}
-
-	.modal.about .entry-content
-	{
-		font-size: 1.25rem;
 	}
 }
 

@@ -2,8 +2,9 @@
 
 	<div id="primary" class="content-area">
 
+	
 		<header class="page-header">
-			<h1 class="page-title">Notes</h1>
+			<h1 class="page-title"><?php echo is_search() ? 'Search' : 'Notes'; ?></h1>
 		</header><!-- .page-header -->
 
 		<main id="main" class="site-main" role="main">
@@ -28,11 +29,12 @@
 					$i = 1;
 
 					echo '<div class="dot-pagination">';
+					$base = is_search() ? '?s=' . get_search_query() . '&paged=' : '/notes/page/';
 
 					for( $i; $i <= $num; $i++ )
 					{
 						$class = ($i == $paged) ? 'current' : '';
-						echo '<a href="/notes/page/' . $i . '" class="' . $class . '" title="Go to page ' . $i . '">' . $i . '</a>';
+						echo '<a href="' . $base . $i . '" class="' . $class . '" title="Go to page ' . $i . '">' . $i . '</a>';
 					}
 
 					echo '</div>';

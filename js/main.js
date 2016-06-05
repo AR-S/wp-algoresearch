@@ -102,7 +102,7 @@ jQuery(window).on("popstate", function(e)
 {
 	if( ajaxRx.test(location.href) ) {
 		return loadLinkContent(location.href, null, showModal);
-	} else if( jQuery("body").hasClass("post-type-archive-note") ) {
+	} else if( jQuery("body").hasClass("post-type-archive-note") || jQuery("body").hasClass("search") ) {
 		loadLinkContent(this.href, null, replaceContent);
 	}
 
@@ -145,6 +145,7 @@ function replaceContent( tree )
 		adjustExcerptHeight(newEntries);
 
 		$grid = jQuery("body.notes .site-main");
+
 		$grid.packery({
 			itemSelector: ".hentry"
 		});
