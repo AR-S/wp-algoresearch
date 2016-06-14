@@ -220,11 +220,12 @@ function addEllipsis( el, h, w, lh )
 	el[0].innerHTML = "<p>" + lines.join(" ").replace(/\s(\w+)$/, "&hellip;") + "</p>";
 }
 
-function showModal( tree )
+function showModal( tree, entry, doc )
 {
 	var menu = jQuery(".site-menu-drawer");
 	var current = jQuery(".site-main .modal");
 	var entry = tree.find(".hentry");
+	var domEntry = tree[0].querySelector(".hentry");
 	var name = location.href.match(ajaxRx)[1];
 
 	entry.addClass("open modal " + name).fadeTo(0, 0);
@@ -236,22 +237,35 @@ function showModal( tree )
 		current.fadeOut(function()
 		{
 			jQuery(this).remove();
-			jQuery(".site-main").append(entry);
+			document.querySelector(".site-main").appendChild(domEntry);
 			jQuery("body").addClass("overflown");
 			resBaldrickTriggers();
 			entry.fadeTo(400, 1);
 			menu.removeClass("toggled");
+			runScripts(doc);
 		});
 	}
 	else
 	{
-		jQuery(".site-main").append(entry);
+		document.querySelector(".site-main").appendChild(domEntry);
 		jQuery("body").addClass("overflown");
 		resBaldrickTriggers();
 		entry.append('<div class="site-logo"><a href="/" rel="home">ars</a></div>');
 		entry.fadeTo(400, 1);
 		menu.removeClass("toggled");
+		runScripts(doc);
 	}	
+}
+
+function runScripts ( doc )
+{
+	var body = doc.getElementsByTagName("body");
+	var scripts = body[0].getElementsByTagName("script");
+
+	for(var i=0;i<scripts.length;i++)  
+	{  
+		eval(scripts[i].text);  
+	} 
 }
 
 function showNote( entry )
@@ -383,8 +397,28 @@ function loadLinkContent( url, entry, callback )
 
 	jQuery.ajax(params).done(function(res)
 	{
-		var tree = jQuery("<div>").append( jQuery.parseHTML(res) );
-		callback(tree, entry);
+		var doc = new DOMParser().parseFromString(res, "text/html");
+		console.log(doc.querySelector("#main"));
+
+		var tree = doc.querySelector("#main");
+		var $tree = jQuery(tree);
+		var calderaForms = tree.querySelector(".caldera-grid");
+		var recaptchaScript = document.querySelector("script[src='https://www.google.com/recaptcha/api.js?ver=1.3.5.3']");
+
+		if( calderaForms && ! recaptchaScript )
+		{
+			var script = document.createElement("script");
+			script.type = "text/javascript";
+			script.onload = function(){ callback($tree, entry, doc); }
+			script.src = "https://www.google.com/recaptcha/api.js?ver=1.3.5.3";
+			document.getElementsByTagName("body")[0].appendChild(script);
+			console.log("appended");
+		}
+		else
+		{
+			callback($tree, entry, doc);
+		}
+		
 	});
 }
 
@@ -458,3 +492,50 @@ function insertContent( tree, entry )
 		});
 	}
 }
+
+/*
+ * DOMParser HTML extension
+ * 2012-09-04
+ * 
+ * By Eli Grey, http://eligrey.com
+ * Public domain.
+ * NO WARRANTY EXPRESSED OR IMPLIED. USE AT YOUR OWN RISK.
+ */
+
+/*! @source https://gist.github.com/1129031 */
+/*global document, DOMParser*/
+
+(function(DOMParser) {
+	"use strict";
+
+	var
+	  proto = DOMParser.prototype
+	, nativeParse = proto.parseFromString
+	;
+
+	// Firefox/Opera/IE throw errors on unsupported types
+	try {
+		// WebKit returns null on unsupported types
+		if ((new DOMParser()).parseFromString("", "text/html")) {
+			// text/html parsing is natively supported
+			return;
+		}
+	} catch (ex) {}
+
+	proto.parseFromString = function(markup, type) {
+		if (/^\s*text\/html\s*(?:;|$)/i.test(type)) {
+			var
+			  doc = document.implementation.createHTMLDocument("")
+			;
+	      		if (markup.toLowerCase().indexOf('<!doctype') > -1) {
+        			doc.documentElement.innerHTML = markup;
+      			}
+      			else {
+        			doc.body.innerHTML = markup;
+      			}
+			return doc;
+		} else {
+			return nativeParse.apply(this, arguments);
+		}
+	};
+}(DOMParser));
