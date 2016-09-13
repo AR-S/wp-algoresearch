@@ -1,7 +1,11 @@
 <nav id="site-navigation" class="main-navigation" role="navigation">
+
 	<a href="#primary-menu-container" class="menu-show" aria-controls="primary-menu" aria-expanded="false">Primary Menu</a>
+
 	<div class="site-menu-drawer">
+
 		<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'container_id' => 'primary-menu-container' ) );?>
+
 		<a href="#" class="menu-hide" aria-controls="primary-menu" aria-expanded="false">X</a>
 
 		<!-- Begin MailChimp Signup Form -->
@@ -16,5 +20,12 @@
 			</form>
 		</div>
 		<!--End mc_embed_signup-->
+
+		<div class="follow">
+			<p class="title">Follow us</p>
+			<p class="links">on <a href="#">Facebook</a>, <a href="#">Twitter</a></p>
+		</div>
+
 	</div>
+
 </nav><!-- #site-navigation -->
