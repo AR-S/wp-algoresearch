@@ -33,7 +33,7 @@
 			</div>
 		</div>
 
-		<?php if( is_home() || is_archive() ) : ?>
+		<?php if( ! is_page() ) : ?>
 		<div class="category-menu">
 			<a href="#" class="the-dot" style="color: <?php algores_active_category_background(); ?>"><span>Choose a category</span></a>
 			<ul>

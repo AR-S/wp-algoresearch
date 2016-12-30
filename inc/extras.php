@@ -164,7 +164,11 @@ function algores_filter_caldera_forms_assets( $urls )
 	foreach( $urls as $script_key => $script_url )
 	{
 		if( ! empty( $script_url ) ){
-			wp_enqueue_script( 'cf-' . $script_key, $script_url, array('jquery'), CFCORE_VER, true );
+			if( substr($script_url, -4) == '.css' ) {
+				wp_enqueue_style( 'cf-' . $script_key, $script_url, array(), CFCORE_VER );
+			} else {
+				wp_enqueue_script( 'cf-' . $script_key, $script_url, array('jquery'), CFCORE_VER, true );
+			}
 		}
 	}
 
