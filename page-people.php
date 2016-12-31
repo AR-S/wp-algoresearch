@@ -18,11 +18,18 @@
 						$last_name = get_user_meta($user->ID, 'last_name', true);
 						$description = wpautop(get_user_meta($user->ID, 'description', true));
 						$photo = get_user_meta($user->ID, 'photo', true);
+						$email = $user->user_email;
 						$link = $user->data->user_url;
+
+						if( $email )
+						{
+							$email = '<p>+ <a href="mailto:' . $email . '">' . $email . '</a></p>';
+							$description = $email . $description;
+						}
 
 						if( $link )
 						{
-							$link = '<p>+ <a href="' . $link . '">Personal web page</a></p>';
+							$link = '<p>+ <a href="' . $link . '">' . $link . '</a></p>';
 							$description = $link . $description;
 						}
 

@@ -1646,7 +1646,8 @@ input[type="submit"].mc-embedded-subscribe
 
 .single .hentry
 {
-	margin: 2em auto;
+	margin: 4em auto;
+	padding-bottom: 4em;
 }
 
 .research .hentry::before,
