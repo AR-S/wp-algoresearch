@@ -2,6 +2,11 @@ var rootRx = new RegExp("^" + siteroot);
 var ajaxRx = new RegExp(/(about|contact)\/$/);
 var $grid;
 var originalUrl = location.href;
+var headroomEl = document.querySelector(".headroom");
+var headroom  = new Headroom(headroomEl, {
+	offset: 0
+});
+headroom.init();
 
 jQuery(document).ready(function()
 {
