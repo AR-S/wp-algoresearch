@@ -99,15 +99,18 @@ add_action( 'after_setup_theme', 'algores_setup' );
 
 function algores_scripts()
 {
-	$cssdate = '20160407';
+	$cssdate = '20170225';
+	$template_dir = get_template_directory_uri();
 
-	wp_enqueue_style( 'algores-style', get_template_directory_uri() . '/style.css', array(), $cssdate );
-	wp_enqueue_script( 'algores-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
-	wp_enqueue_script( 'imagesLoaded', get_template_directory_uri() . '/js/imagesloaded.pkgd.min.js', array('jquery'), '20160131', true );
-	wp_enqueue_script( 'owlcarousel2', get_template_directory_uri() . '/js/owlcarousel2/owl.carousel.min.js', array('imagesLoaded'), '20160131', true );
-	wp_enqueue_script( 'packery', get_template_directory_uri() . '/js/packery.pkgd.min.js', array('owlcarousel2'), '2.0.0', true );
-	wp_enqueue_script( 'packery', 'https://www.google.com/recaptcha/api.js?ver=1.3.3.1', array('packery'), '', true );
-	wp_enqueue_script( 'algores-main', get_template_directory_uri() . '/js/main.js', array('packery'), $cssdate, true );
+	wp_enqueue_style( 'algores-style', $template_dir . '/style.css', array(), $cssdate );
+
+	wp_enqueue_script( 'algores-skip-link-focus-fix', $template_dir . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'imagesLoaded', $template_dir . '/js/imagesloaded.pkgd.min.js', array('jquery'), '20160131', true );
+	wp_enqueue_script( 'owlcarousel2', $template_dir . '/js/owlcarousel2/owl.carousel.min.js', array('imagesLoaded'), '20160131', true );
+	wp_enqueue_script( 'packery',  $template_dir . '/js/packery.pkgd.min.js', array('owlcarousel2'), '2.0.0', true );
+	wp_enqueue_script( 'recaptcha', 'https://www.google.com/recaptcha/api.js?ver=1.3.3.1', array('packery'), '', true );
+	wp_enqueue_script( 'headroom', $template_dir . '/js/headroom.min.js', array('recaptcha'), '0.9.3', true );
+	wp_enqueue_script( 'algores-main', $template_dir . '/js/main.js', array('headroom'), $cssdate, true );
 }
 add_action( 'wp_enqueue_scripts', 'algores_scripts' );
 
